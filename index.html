@@ -1,0 +1,252 @@
+<!--lets blast your phone guys😁
+Turn up your volume to hear blast sound💥.
+Vibration and showing battery percentage doesnot work in ios.
+Plaese don't click the button,just hold untill the blast if you dont want leave it before 10sec.
+
+Hope you like it🙂
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>blast</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            background:linear-gradient(50deg,#2193b0,#6dd5ed);
+            background-repeat: no-repeat;
+            height: 100vh;
+            user-select:none;
+        }
+        #body{
+                width:220px;
+                position: relative;
+                top:20px;
+                left: 60px;
+                height:370px;
+                background:whitesmoke;
+                border-radius: 20px;
+                transition:background 3s;
+            }
+            #screen{
+                position: absolute;
+                top:15px;
+                left:10px;
+                width:200px;
+                height:330px;
+                background:#222;
+            }
+            #camera1{
+                width:12px;
+                top:1.5px;
+                left:85px;
+                position: absolute;
+                height: 12px;
+                border-radius:6px;
+                background: #aaa;
+            }
+            #camera2{
+                position: absolute;
+                width:5px;
+                height: 5px;
+                top:3px;
+                left:3px;
+                border-radius: 2.5px;
+                background: #000;
+            }
+            #msg{
+                color:wheat;
+                height:15px;
+                position:middle;
+                font-size: 7vh;
+                top:35px;
+                text-align: center;
+            }
+            #button{
+                position: absolute;
+                top:190px;
+                left:130px;
+                width: 90px;
+                height: 90px;
+                border-radius: 60%;
+                background:linear-gradient(120deg,#f6d365 0%,#fda085 100%);
+                text-align: center;
+                padding-top: 25px;
+                font-size: 4vh;
+                color:firebrick;
+                animation:sc 2s ease infinite;
+            }
+            @keyframes sc{
+                50%{
+                    font-size:5vh;
+                }
+            }
+            .s{
+                animation:shaking 1s ease infinite;
+            }
+           @keyframes shaking {
+                0%{
+                    transform: translate(0);
+                }
+                20%,40%,60%,80%{
+                    transform: translate(0.5em);
+                    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.5);
+                }
+                10%,30%,50%,90%{
+                    transform: translate(-0.5em);
+                }
+                100%{
+                    transform: translate(0);
+                }
+            }
+            #status{
+                width:100%;
+                position:absolute;
+                top:30px;
+                text-align:center;
+                font-size:8vh;
+                color:#959;
+            }
+            .cover{
+            position:absolute;
+            top:0;
+            left:0;
+            z-index:100;
+                width:100%;
+                height:110vh;
+                background:black;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                font-size:3vh;
+                animation:scale 7s ease;
+                color:white;
+                animation-fill-mode:forwards;
+            }
+            @keyframes scale{
+                80%{
+                    font-size:12vh;
+                    letter-spacing:35px;
+                }
+                100%{
+                    font-size:0;
+                }
+            }
+            #battery{
+                position:absolute;
+                width:100%;
+                text-align:right;
+                color:white;
+                font-size:10px;
+                top:0;
+            }
+    </style>  
+</head>
+<body>
+            <audio src="https://www.dropbox.com/s/01682gqzad54zkq/Explosion%2B9.mp3?raw=1"id="exp"preload="auto"></audio>
+    <div id="body">
+        <div id="screen">
+            
+            <div id="battery"></div>
+            <div id="msg">Hello🙂
+                
+            </div>
+        </div>
+        <div id="camera1">
+            <div id="camera2"></div>
+        </div>
+    </div>
+   <!--lets<div id="status">Hold</div> s-->
+    <div id="button" ontouchstart="start()" ontouchend="end()">Blast</div>
+    <div id="a"></div>
+    <!-- <h3 style="text-align: center;">@Anubhav</h3> -->
+    <div id="cover"></div>
+<p></p>
+   
+     <script>
+      var a=setInterval(a1,1000);
+            function a1(){
+            navigator.getBattery().then(function(battery){
+                var scr=document.getElementById("battery");
+                var val;
+                val=battery.level*100;
+                scr.innerHTML=Math.round(val)+"%";
+            });}
+        let t1;
+        var s;
+        var t4;
+        var msg=document.getElementById("msg");
+        var bac=document.getElementById("body");
+        var but=document.getElementById("button");
+        function start(){
+            t1 = new Date().getTime();
+            s=setInterval(diff,1000);
+            but.style.animationDuration="0s";
+        }
+        function diff(){
+            let t2;
+            t2=new Date().getTime();
+            t4=t2-t1;
+            if(t4>=0 && t4<3000){
+                round1();
+            }
+            else if(t4>=3000 && t4<6000){
+                round2();
+            }
+            else if(t4>=6000 && t4<9000){
+                round3();
+            }
+            else if(t4>=9000 && t4<10000){
+                round4();
+            }
+            else if(t4>10000){
+                document.getElementById("status").innerHTML="Leave"
+            }
+        }
+        function round1(){
+            msg.innerHTML="STOP 😠";
+            bac.style.background="orange";
+            bac.classList.add("s");
+            window.navigator.vibrate([1000,500,2000,500,2000]);
+        }
+        function round2(){
+            msg.innerHTML="It hurts😰";
+            bac.style.background="#f66";
+            
+        }
+        function round3(){
+            msg.innerHTML="Please😟";
+            bac.style.background="#ff4500";
+            bac.style.animationDuration="0.6s";
+            
+        }
+        function round4(){
+            msg.innerHTML="Noooo..😣";
+            bac.style.background="#a00";
+            bac.style.animationDuration="0.3s";
+        }
+        function end(){
+        but.style.animationDuration="2s";
+        clearInterval(s);
+        if(t4<10000){
+            bac.style.animationDuration="1s";
+            t1=undefined;
+            msg.innerHTML="thanks☺️";
+            bac.style.background="whitesmoke";
+            window.navigator.vibrate(0);
+            bac.classList.remove("s");
+        }
+        else if(t4>10000){
+                            var e=document.getElementById("exp");
+            e.play();
+            var s=document.getElementById("cover");
+            s.classList.add("cover");
+            s.innerHTML="BooM";
+            }
+        }
+    </script>
+</body>
+</html>
